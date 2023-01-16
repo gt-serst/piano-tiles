@@ -7,9 +7,6 @@ public class WordInput : MonoBehaviour
 	void Update()
 	{
 		foreach(char letter in Input.inputString)
-		{
-			print(letter);
 			wordManager.TypeLetter(letter);
-		}
 	}
 }

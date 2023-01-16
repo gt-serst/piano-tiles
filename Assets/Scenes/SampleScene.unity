@@ -345,7 +345,6 @@ GameObject:
   - component: {fileID: 1248414940}
   - component: {fileID: 1248414939}
   - component: {fileID: 1248414938}
-  - component: {fileID: 1248414937}
   - component: {fileID: 1248414936}
   m_Layer: 0
   m_Name: WordManager
@@ -366,19 +365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb153cb2936ab4eb6afe2a592415d71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1248414937
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1248414935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b1600b7c89d14d3e8827cd643125cce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wordManager: {fileID: 1248414940}
 --- !u!114 &1248414938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wordPrefab: {fileID: 7355053341554783951, guid: eec458d923ee94169a41ce7eedc99763, type: 3}
   wordCanvas: {fileID: 364991709}
+  tilesImage: {fileID: 0}
 --- !u!114 &1248414939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +412,7 @@ MonoBehaviour:
     word: 
     display: {fileID: 0}
   activeWord: 0
+  objectToFind: {fileID: 0}
 --- !u!4 &1248414941
 Transform:
   m_ObjectHideFlags: 0

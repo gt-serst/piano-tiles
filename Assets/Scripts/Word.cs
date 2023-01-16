@@ -11,7 +11,6 @@ public class Word
 	{
 		word = _word;
 		typeIndex = 0;
-		Debug.Log(typeIndex);
 
 		display = _display;
 		display.SetWord(word);
