@@ -5,12 +5,14 @@ using TMPro;
 public class WordDisplay : MonoBehaviour
 {
 	public TMP_Text letter;
-
 	public void SetWord(string word)
 	{
 		letter.text = word;
 	}
-
+	public void ChangeLettersColor()
+	{
+		letter.color = Color.red;
+	}
 	public void	RemoveLetter()
 	{
 		letter.text = letter.text.Remove(0, 1);
@@ -20,9 +22,8 @@ public class WordDisplay : MonoBehaviour
 	{
 		Destroy(gameObject);
 	}
-
 	public void Update()
 	{
-		transform.Translate(0f, (Time.deltaTime * (-2f)), 0f);
+		transform.Translate(0f, (Time.deltaTime * (-1f)), 0f);
 	}
 }

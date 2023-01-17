@@ -24,6 +24,10 @@ public class Word
 		typeIndex++;
 		display.RemoveLetter(); //Remove the letter on screen
 	}
+	public void WrongLetter()
+	{
+		display.ChangeLettersColor();
+	}
 	public bool WordTyped()
 	{
 		if (typeIndex >= word.Length)

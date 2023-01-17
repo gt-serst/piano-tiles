@@ -13,49 +13,34 @@ public class WordManager : MonoBehaviour
 	public bool				activeWord;
 	public GameObject		objectToFind;
 
-	void Start()
-	{
-		AddWord();
-	}
-
 	private	void Update()
 	{
-		objectToFind = GameObject.Find("Word(Clone)");
-		if (objectToFind.transform.position.y <= -6.75f)
+		if (!GameObject.Find("Word(Clone)"))
+			AddWord();
+		else
 		{
-			if (activeWord)
-			{
-				activeWord = false;
-				words.Remove(currentWord);
-				Destroy(objectToFind);
-			}
-			else
-			{
-				words.RemoveAt(0);
-				Destroy(objectToFind);
-			}
+			CheckOutliers();
 		}
-/*
-		GameObject [] Target = GameObject.FindGameObjectsWithTag("Word");
-		foreach (GameObject item in Target)
-		{
-			float tilesPosition = item.transform.position.y;
+	}
+
+	public void CheckOutliers()
+	{
+		objectToFind = GameObject.Find("Word(Clone)");
+			float tilesPosition = objectToFind.transform.position.y;
 			if (tilesPosition <= -6.75f)
 			{
 				if (activeWord)
 				{
 					activeWord = false;
 					words.Remove(currentWord);
-					Destroy(item);
+					Destroy(objectToFind);
 				}
 				else
 				{
+					Destroy(objectToFind);
 					words.RemoveAt(0);
-					Destroy(item);
-				};
+				}
 			}
-		}
-*/
 	}
 
 	public void AddWord()
@@ -72,13 +57,15 @@ public class WordManager : MonoBehaviour
 
 			if (currentLetter == letter)
 				currentWord.TypeLetter();
+			else
+				currentWord.WrongLetter();
+
 		}
 		else
 		{
 			foreach (Word word in words)
 			{
 				char currentLetter = word.GetNextLetter();
-				Debug.Log(currentLetter);
 
 				if (currentLetter == letter)
 				{
