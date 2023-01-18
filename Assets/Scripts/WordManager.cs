@@ -12,6 +12,8 @@ public class WordManager : MonoBehaviour
 	public Word				currentWord;
 	public bool				activeWord;
 	public GameObject		objectToFind;
+	public float			correctLetters = 0;
+	public float			incorrectLetters = 0;
 
 	private	void Update()
 	{
@@ -56,9 +58,15 @@ public class WordManager : MonoBehaviour
 			char currentLetter = currentWord.GetNextLetter();
 
 			if (currentLetter == letter)
+			{
 				currentWord.TypeLetter();
+				correctLetters++;
+			}
 			else
+			{
 				currentWord.WrongLetter();
+				incorrectLetters++;
+			}
 
 		}
 		else
@@ -72,7 +80,10 @@ public class WordManager : MonoBehaviour
 					currentWord = word;
 					activeWord = true;
 					word.TypeLetter();
+					correctLetters++;
 				}
+				else
+					incorrectLetters++;
 				break;
 			}
 		}
