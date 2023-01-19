@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class WordSpawner : MonoBehaviour
 {
-	public GameObject wordPrefab;
-	public Transform wordCanvas;
-	private static int compteur = 0;
-	public GameObject tilesImage;
+	public		GameObject wordPrefab;
+	public		Transform wordCanvas;
+	public		GameObject Collider;
+	public int	count = 0;
 
 	public WordDisplay SpawnWord()
 	{
@@ -15,10 +15,10 @@ public class WordSpawner : MonoBehaviour
 		int randomIndex = Random.Range(0, tilesPosition.Length);
 		Vector3 randomPosition = new Vector3(tilesPosition[randomIndex], 9.5f);
 		GameObject wordObj = Instantiate(wordPrefab, randomPosition, Quaternion.identity, wordCanvas);
-		/*	change gameobject name using a counter to differentiate prefabs in raycast condition check */
-		tilesImage = GameObject.Find("Word(Clone)/tiles");
-		tilesImage.name = "tiles" + compteur;
-		compteur++;
+		/*	change collider name using a counter to differentiate tiles in raycast condition */
+		Collider = GameObject.Find("Word(Clone)/tiles/Collider");
+		Collider.name = "collider " + count;
+		count++;
 		WordDisplay wordDisplay = wordObj.GetComponent<WordDisplay>();
 		return wordDisplay;
 	}

@@ -476,6 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousHit: 
   wordManager: {fileID: 1248414940}
+  wordSpawner: {fileID: 1248414938}
 --- !u!4 &933618780
 Transform:
   m_ObjectHideFlags: 0
@@ -484,7 +485,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933618778}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.01, y: 5.01, z: -86.40067}
+  m_LocalPosition: {x: -5, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -665,7 +666,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wordPrefab: {fileID: 7355053341554783951, guid: eec458d923ee94169a41ce7eedc99763, type: 3}
   wordCanvas: {fileID: 364991709}
-  tilesImage: {fileID: 0}
+  Collider: {fileID: 7355053341554783951, guid: eec458d923ee94169a41ce7eedc99763, type: 3}
+  count: 0
 --- !u!114 &1248414939
 MonoBehaviour:
   m_ObjectHideFlags: 0
