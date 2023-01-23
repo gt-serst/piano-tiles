@@ -24,7 +24,7 @@ public class Word
 		typeIndex++;
 		display.RemoveLetter(); //Remove the letter on screen
 	}
-	public void WrongLetter()
+	public void TypeWrongLetter()
 	{
 		display.ChangeLettersColor();
 	}
