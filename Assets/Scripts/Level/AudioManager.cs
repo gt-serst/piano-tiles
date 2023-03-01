@@ -19,4 +19,8 @@ public class AudioManager : MonoBehaviour
 		audioSource.clip = playlist[musicIndex];
 		audioSource.Play();
 	}
+	public void StopPlaying()
+	{
+		audioSource.Stop();
+	}
 }

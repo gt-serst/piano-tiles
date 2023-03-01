@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
 	[DllImport("__Internal")]
 	private static extern void GameFinished (string text, string text_typed, int duration);
 	// end react unity web gl
-	public AudioSource audioSource;
-	public  AudioClip audioClip;
+	public AudioManager audioManager;
 	public GameObject scoreMenuUI;
 	public WordManager wordManager;// used to send informations to reactJS to store the restults in DB when the game is finished
 	public int level;
@@ -19,14 +18,9 @@ public class GameManager : MonoBehaviour
 	{
 		level = PlayerPrefs.GetInt("Sauv_Language");
 	}
-	void Start()
-	{
-		audioSource = GetComponent<AudioSource>();
-		audioClip = audioSource.clip;
-	}
 	void Update()
 	{
-		if(level == 1 && (audioSource.clip.length - Time.timeSinceLevelLoad)/2 < 0f)
+		if(level == 1 && (audioManager.audioSource.clip.length/2 - Time.timeSinceLevelLoad) < 0f)
 		{
 			string text = wordManager.GetText();
 			string text_typed = wordManager.GetTextTyped();
@@ -36,9 +30,10 @@ public class GameManager : MonoBehaviour
 			GameFinished(text, text_typed, duration);
 			#endif
 			Time.timeScale = 0f;
+			audioManager.StopPlaying();
 			scoreMenuUI.SetActive(true);
 		}
-		if (level == 2 && audioSource.clip.length - Time.timeSinceLevelLoad < 0f)
+		if (level == 2 && audioManager.audioSource.clip.length - Time.timeSinceLevelLoad < 0f)
 		{
 			string text = wordManager.GetText();
 			string text_typed = wordManager.GetTextTyped();
