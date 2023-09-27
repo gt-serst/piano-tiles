@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 	public WordManager wordManager;// used to send informations to reactJS to store the restults in DB when the game is finished
 	public int level;
 
-	private bool finished= false;
+	public bool finished= false;
 
 	public void Awake()
 	{

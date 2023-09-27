@@ -684,6 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509cd8e61a8194815851f98ac111da5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1336023039}
   wordManager: {fileID: 1248414940}
 --- !u!114 &1248414940
 MonoBehaviour:
@@ -754,6 +755,7 @@ MonoBehaviour:
   scoreMenuUI: {fileID: 1569502047}
   wordManager: {fileID: 1248414940}
   level: 0
+  finished: 0
 --- !u!4 &1336023041
 Transform:
   m_ObjectHideFlags: 0
