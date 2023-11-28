@@ -9,16 +9,25 @@ public class WordSpawner : MonoBehaviour
 	public		GameObject Collider;
 	public int	count = 0;
 
-	public WordDisplay SpawnWord()
+	public WordDisplay SpawnLetter()
 	{
 		float[]	tilesPosition = {-3f, -1f, 1f, 3f};
 		int randomIndex = Random.Range(0, tilesPosition.Length);
 		Vector3 randomPosition = new Vector3(tilesPosition[randomIndex], 9.5f);
-		GameObject wordObj = Instantiate(wordPrefab, randomPosition, Quaternion.identity, wordCanvas);
+		GameObject letterObj = Instantiate(wordPrefab, randomPosition, Quaternion.identity, wordCanvas);
 		/*	change collider name using a counter to differentiate tiles in raycast condition */
-		Collider = GameObject.Find("Word(Clone)/tiles/Collider");
+		Collider = GameObject.Find("Letter(Clone)/tiles/Collider");
 		Collider.name = "collider " + count;
 		count++;
+		WordDisplay wordDisplay = letterObj.GetComponent<WordDisplay>();
+		return wordDisplay;
+	}
+
+	public WordDisplay SpawnWord()
+	{
+		Vector3 position = new Vector3(0f, 0f);
+		GameObject wordObj = Instantiate(wordPrefab, position, Quaternion.identity, wordCanvas);
+		/*	change collider name using a counter to differentiate tiles in raycast condition */
 		WordDisplay wordDisplay = wordObj.GetComponent<WordDisplay>();
 		return wordDisplay;
 	}

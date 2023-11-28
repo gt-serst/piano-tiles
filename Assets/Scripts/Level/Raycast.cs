@@ -15,7 +15,7 @@ public class Raycast : MonoBehaviour
 		if (hit && hit.transform.name != previousHit)
 		{
 			previousHit = hit.transform.name;
-			wordManager.AddWord();
+			wordManager.AddLetter();
 		}
 	}
 }

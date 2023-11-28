@@ -13,7 +13,6 @@ public class WordManager : MonoBehaviour
 	private bool is_letter_false=false; // We do not send that to ReactJS, but it is useful to store only once when an error is made on a letter. (if the user typed wrongly once the error, we only count it once)
 	// ------ end variables to send to reactJS ------
 	public List<Word>		words;
-
 	public WordGenerator	wordGenerator;
 	public WordSpawner		wordSpawner;
 	public Word				currentWord;
@@ -28,8 +27,8 @@ public class WordManager : MonoBehaviour
 	}
 	private	void Update()
 	{
-		if (!GameObject.Find("Word(Clone)"))
-			AddWord();
+		if (!GameObject.Find("Letter(Clone)"))
+			AddLetter();
 		else
 		{
 			CheckOutliers();
@@ -38,7 +37,7 @@ public class WordManager : MonoBehaviour
 
 	public void CheckOutliers()
 	{
-		objectToFind = GameObject.Find("Word(Clone)");
+		objectToFind = GameObject.Find("Letter(Clone)");
 			float tilesPosition = objectToFind.transform.position.y;
 			if (tilesPosition <= -6.75f)
 			{
@@ -62,10 +61,15 @@ public class WordManager : MonoBehaviour
 			}
 	}
 
+	public void AddLetter()
+	{
+		Word letter = new Word(wordGenerator.GetNextLetter(), wordSpawner.SpawnLetter());
+		words.Add(letter);
+	}
+
 	public void AddWord()
 	{
-		Word word = new Word(wordGenerator.GetNextLetter(), wordSpawner.SpawnWord());
-		words.Add(word);
+		Word word = new Word(wordGenerator.SetNextWord(), wordSpawner.SpawnWord());
 	}
 
 	public void TypeLetter(char letter)
