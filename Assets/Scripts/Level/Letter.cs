@@ -28,7 +28,7 @@ public class Letter
 	{
 		display.ChangeLettersColor();
 	}
-	public bool WordTyped()
+	public bool LetterTyped()
 	{
 		if (typeIndex >= letter.Length)
 		{

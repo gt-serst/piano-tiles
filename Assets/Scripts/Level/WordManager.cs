@@ -12,14 +12,15 @@ public class WordManager : MonoBehaviour
 	private string text_typed=""; // the text that the user has actually typed
 	private bool is_letter_false=false; // We do not send that to ReactJS, but it is useful to store only once when an error is made on a letter. (if the user typed wrongly once the error, we only count it once)
 	// ------ end variables to send to reactJS ------
-	public List<Letter>		letters;
+	//public List<Letter>		letters;
 	public List<Word>		words;
 	public WordGenerator	wordGenerator;
 	public WordSpawner		wordSpawner;
 	public Letter			currentLetter;
 	public Word				currentWord;
 	public bool				activeWord;
-	public GameObject		objectToFind;
+	public GameObject		wordObject;
+	public GameObject		letterObject;
 	public float			correctLetters = 0;
 	public float			incorrectLetters = 0;
 
@@ -39,8 +40,9 @@ public class WordManager : MonoBehaviour
 
 	public void CheckOutliers()
 	{
-		objectToFind = GameObject.Find("Letter(Clone)");
-			float tilesPosition = objectToFind.transform.position.y;
+		wordObject = GameObject.Find("Word(Clone)");
+		letterObject = GameObject.Find("Letter(Clone)");
+			float tilesPosition = letterObject.transform.position.y;
 			if (tilesPosition <= -4f)
 			{
 				if(activeWord || is_letter_false){
@@ -51,14 +53,28 @@ public class WordManager : MonoBehaviour
 				}
 				if (activeWord)
 				{
-					activeWord = false;
-					letters.Remove(currentLetter);
-					Destroy(objectToFind);
+					//activeWord = false;
+					//letters.Remove(currentLetter);
+					//words.Remove(currentWord);
+					currentWord.TypeLetter();
+					Destroy(letterObject);
+					//Destroy(wordObject);
+					if ()
+					{
+						words.Remove(currentWord);
+						Destroy(wordObject);
+					}
 				}
 				else
 				{
-					Destroy(objectToFind);
-					letters.RemoveAt(0);
+					Destroy(letterObject);
+					activeWord = true;
+					//letters.RemoveAt(0);
+					if ()
+					{
+						words.RemoveAt(0);
+						Destroy(wordObject);
+					}
 				}
 			}
 	}
@@ -66,7 +82,8 @@ public class WordManager : MonoBehaviour
 	public void AddLetter()
 	{
 		Letter letter = new Letter(wordGenerator.GetNextLetter(), wordSpawner.SpawnLetter());
-		letters.Add(letter);
+		//letters.Add(letter);
+		currentLetter = letter;
 	}
 
 	public void AddWord()
@@ -77,17 +94,18 @@ public class WordManager : MonoBehaviour
 
 	public void TypeLetter(char letterTyped)
 	{
-		foreach (Letter letter in letters)
-		{
-			currentLetter = letter;
+		//foreach (Letter letter in letters)
+		//{
 			if (activeWord)
 			{
 				char letterToType = currentWord.GetNextLetter();
+				AddLetter();
 
 				if (letterToType == letterTyped)
 				{
 					currentWord.TypeLetter();
-					letter.TypeLetter();
+					currentLetter.TypeLetter();
+					Destroy(letterObject);
 					correctLetters++;
 					if(!is_letter_false)
 					{
@@ -106,7 +124,7 @@ public class WordManager : MonoBehaviour
 					if(!is_letter_false)
 					{
 						currentWord.TypeWrongLetter();
-
+						currentLetter.TypeWrongLetter();
 						incorrectLetters++;
 						is_letter_false = true;
 						text = text + letterToType; // word.GetNextLetter() was the correct letter to write
@@ -123,13 +141,15 @@ public class WordManager : MonoBehaviour
 				foreach (Word word in words)
 				{
 					char letterToType = word.GetNextLetter();
+					//AddLetter();
 
 					if (letterToType == letterTyped)
 					{
 						currentWord = word;
 						activeWord = true;
 						word.TypeLetter();
-						letter.TypeLetter();
+						currentLetter.TypeLetter();
+						Destroy(letterObject);
 						correctLetters++;
 						if(!is_letter_false)
 						{
@@ -159,7 +179,7 @@ public class WordManager : MonoBehaviour
 							// the first time that is write wrongly the letter (of the new word in this case)
 							incorrectLetters++;
 							word.TypeWrongLetter();
-							letter.TypeWrongLetter();
+							currentLetter.TypeWrongLetter();
 							if(text.Length!=0)
 							{
 								text = text +" "+ letterToType; // correct_letter was the correct letter to write
@@ -186,7 +206,7 @@ public class WordManager : MonoBehaviour
 				activeWord = false;
 				words.Remove(currentWord);
 			}
-		}
+		//}
 	}
 	/* 3 methods to send results to GameManager when the game is finished, the results will be sent to ReactJS after that*/
 	public string GetText()
