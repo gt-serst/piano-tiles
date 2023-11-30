@@ -31,6 +31,7 @@ public class WordGenerator : MonoBehaviour
 			compteur++;
 		}
 		selectedWord = nextWord;
+		Debug.Log("Selected Word: "+selectedWord);
 		return (selectedWord);
 	}
 

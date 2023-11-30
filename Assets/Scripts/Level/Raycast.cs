@@ -6,7 +6,6 @@ public class Raycast : MonoBehaviour
 {
 	public string		previousHit;
 	public WordManager	wordManager;
-	public WordSpawner	wordSpawner;
 	private void Update()
 	{
 		RaycastHit2D	hit;

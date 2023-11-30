@@ -33,8 +33,8 @@ public class WordDisplay : MonoBehaviour
 	{
 		Destroy(gameObject);
 	}
-	public void Update()
-	{
-		transform.Translate(0f, (Time.deltaTime * (-1.75f)), 0f);
-	}
+	// public void Update()
+	// {
+	// 	transform.Translate(0f, (Time.deltaTime * (-1.75f)), 0f);
+	// }
 }
