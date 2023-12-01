@@ -94,8 +94,7 @@ GameObject:
   - component: {fileID: 582787835873197185}
   - component: {fileID: 429247829732522655}
   - component: {fileID: 4624733363218342157}
-  - component: {fileID: 983204890326703114}
-  - component: {fileID: -2740664080548675598}
+  - component: {fileID: 1915427897549469554}
   m_Layer: 5
   m_Name: Letter
   m_TagString: Untagged
@@ -220,7 +219,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &983204890326703114
+--- !u!114 &1915427897549469554
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -229,22 +228,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7355053341554783951}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69f5e98ef5d2543dea56599bab31049a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d727b41b201841c4a01bd55bb276f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   letter: {fileID: 4624733363218342157}
---- !u!114 &-2740664080548675598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7355053341554783951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fee042137f51418689f7750d5f14f2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7632576208891619096
 GameObject:
   m_ObjectHideFlags: 0

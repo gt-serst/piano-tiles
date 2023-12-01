@@ -16,7 +16,7 @@ public class WordGenerator : MonoBehaviour
 			wordList = rwc.userWords.ToArray();
 	}
 
-	public string SetNextWord(){
+	public string GetNextWord(){
 		string nextWord;
 
 		if (compteur <= wordList.Length - 1)
@@ -45,7 +45,7 @@ public class WordGenerator : MonoBehaviour
 		}else{
 			// we select a new word because previous word has been completely typed
 			currentLetterIndex=0;
-			wordManager.AddWord();
+			//wordManager.AddWord();
 			string letter = selectedWord[currentLetterIndex].ToString();
 			currentLetterIndex=currentLetterIndex+1;
 			return letter;

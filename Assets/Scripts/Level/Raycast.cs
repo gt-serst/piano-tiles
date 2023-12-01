@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*public class Raycast : MonoBehaviour
+public class Raycast : MonoBehaviour
 {
 	public string		previousHit;
 	public WordManager	wordManager;
@@ -17,4 +17,4 @@ using UnityEngine;
 			wordManager.AddLetter();
 		}
 	}
-}*/
+}

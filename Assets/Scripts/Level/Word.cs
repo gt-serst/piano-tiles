@@ -24,6 +24,11 @@ public class Word
 		typeIndex++;
 		display.RemoveLetter(); //Remove the letter on screen
 	}
+	public void MissedLetter()
+	{
+		typeIndex++;
+		display.RemoveMissedLetter(); //Remove the letter on screen
+	}
 	public void TypeWrongLetter()
 	{
 		display.ChangeLettersColor();

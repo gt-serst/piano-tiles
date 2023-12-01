@@ -10,7 +10,7 @@ public class WordSpawner : MonoBehaviour
 	public		GameObject Collider;
 	public int	count = 0;
 
-	public WordDisplay SpawnLetter()
+	public LetterDisplay SpawnLetter()
 	{
 		float[]	tilesPosition = {-3f, -1f, 1f, 3f};
 		int randomIndex = Random.Range(0, tilesPosition.Length);
@@ -20,8 +20,8 @@ public class WordSpawner : MonoBehaviour
 		Collider = GameObject.Find("Letter(Clone)/tiles/Collider");
 		Collider.name = "collider " + count;
 		count++;
-		WordDisplay wordDisplay = letterObj.GetComponent<WordDisplay>();
-		return wordDisplay;
+		LetterDisplay letterDisplay = letterObj.GetComponent<LetterDisplay>();
+		return letterDisplay;
 	}
 
 	public WordDisplay SpawnWord()
