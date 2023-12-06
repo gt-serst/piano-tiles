@@ -23,23 +23,23 @@ public class WordManager : MonoBehaviour
 	public GameObject		letterObject;
 	public float			correctLetters = 0;
 	public float			incorrectLetters = 0;
+	public int				countLettersDisplayed = 0;
 
 	void Start()
 	{
 		startingTime = DateTime.Now;
+		AddWord();
+		AddLetter();
 	}
 	private	void Update()
 	{
 		wordObject = GameObject.Find("Word(Clone)");
 		letterObject = GameObject.Find("Letter(Clone)");
 
-		if (!wordObject)
-			AddWord();
-		if (!letterObject)
+		if (!letterObject && countLettersDisplayed < wordGenerator.selectedWord.Length)
 			AddLetter();
-		else
+		if (letterObject)
 			CheckOutliers();
-
 	}
 
 	public void CheckOutliers()
@@ -54,6 +54,7 @@ public class WordManager : MonoBehaviour
 			}
 			if (activeWord)
 			{
+				currentLetter = letters[0];
 				currentWord.MissedLetter();
 				currentLetter.MissedLetter();
 				letters.Remove(currentLetter);
@@ -63,7 +64,6 @@ public class WordManager : MonoBehaviour
 			{
 				activeWord = true;
 				currentWord  = words[0];
-				//AddLetter();
 				currentLetter = letters[0];
 				currentWord.MissedLetter();
 				currentLetter.MissedLetter();
@@ -74,6 +74,8 @@ public class WordManager : MonoBehaviour
 			{
 				activeWord = false;
 				words.Remove(currentWord);
+				AddWord();
+				countLettersDisplayed = 0;
 			}
 		}
 	}
@@ -82,6 +84,7 @@ public class WordManager : MonoBehaviour
 	{
 		Letter letter = new Letter(wordGenerator.GetNextLetter(), wordSpawner.SpawnLetter());
 		letters.Add(letter);
+		countLettersDisplayed++;
 	}
 
 	public void AddWord()
@@ -95,7 +98,6 @@ public class WordManager : MonoBehaviour
 		if (activeWord)
 		{
 			char letterToType = currentWord.GetNextLetter();
-			//AddLetter();
 			currentLetter = letters[0];
 			if (letterToType == letterTyped)
 			{
@@ -200,6 +202,8 @@ public class WordManager : MonoBehaviour
 		{
 			activeWord = false;
 			words.Remove(currentWord);
+			AddWord();
+			countLettersDisplayed = 0;
 		}
 	}
 	/* 3 methods to send results to GameManager when the game is finished, the results will be sent to ReactJS after that*/

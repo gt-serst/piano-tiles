@@ -3,7 +3,7 @@ using UnityEngine;
 public class WordGenerator : MonoBehaviour
 {
 	string []			wordList = {"maison", "arbre", "lion", "fleur", "patate", "poutre", "bonbon"};
-	string 				selectedWord = "";
+	public string 		selectedWord = "";
 	int 				currentLetterIndex = 0;
 	private static int	compteur = 0;
 	public WordManager	wordManager;
@@ -31,7 +31,6 @@ public class WordGenerator : MonoBehaviour
 			compteur++;
 		}
 		selectedWord = nextWord;
-		Debug.Log("Selected Word: "+selectedWord);
 		return (selectedWord);
 	}
 

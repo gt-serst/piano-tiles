@@ -477,7 +477,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   previousHit: 
   wordManager: {fileID: 1248414940}
-  wordSpawner: {fileID: 1248414938}
+  wordGenerator: {fileID: 1248414936}
 --- !u!4 &933618780
 Transform:
   m_ObjectHideFlags: 0
@@ -653,6 +653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb153cb2936ab4eb6afe2a592415d71e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedWord: 
   wordManager: {fileID: 1248414940}
 --- !u!114 &1248414938
 MonoBehaviour:
@@ -697,16 +698,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d14234c381b04776b2ca9611cd45588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  letters: []
   words: []
   wordGenerator: {fileID: 1248414936}
   wordSpawner: {fileID: 1248414938}
+  currentLetter:
+    letter: 
+    display: {fileID: 0}
   currentWord:
     word: 
     display: {fileID: 0}
   activeWord: 0
-  objectToFind: {fileID: 0}
+  wordObject: {fileID: 0}
+  letterObject: {fileID: 0}
   correctLetters: 0
   incorrectLetters: 0
+  started: 0
+  countLettersDisplayed: 0
 --- !u!4 &1248414941
 Transform:
   m_ObjectHideFlags: 0
