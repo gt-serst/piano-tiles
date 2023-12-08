@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WordGenerator : MonoBehaviour
 {
-	string []			wordList = {"maison", "arbre", "lion", "fleur", "patate", "poutre", "bonbon"};
+	string []			wordList = {"MAISON", "ARBRE", "LION", "FLEUR", "PATATE", "POUTRE", "BONBON"};
 	public string 		selectedWord = "";
 	int 				currentLetterIndex = 0;
 	private static int	compteur = 0;
@@ -31,22 +31,26 @@ public class WordGenerator : MonoBehaviour
 			compteur++;
 		}
 		selectedWord = nextWord;
+		currentLetterIndex=0;
 		return (selectedWord);
 	}
 
 	public string GetNextLetter()
 	{
 		// we take the next letter of the current word
+		Debug.Log(selectedWord + " " + currentLetterIndex);
 		if(currentLetterIndex<selectedWord.Length){
 			string letter =  selectedWord[currentLetterIndex].ToString();
 			currentLetterIndex=currentLetterIndex+1;
+			Debug.Log(letter);
 			return letter;
 		}else{
 			// we select a new word because previous word has been completely typed
-			currentLetterIndex=0;
+
 			//wordManager.AddWord();
 			string letter = selectedWord[currentLetterIndex].ToString();
 			currentLetterIndex=currentLetterIndex+1;
+			Debug.Log(letter);
 			return letter;
 		}
 	}
